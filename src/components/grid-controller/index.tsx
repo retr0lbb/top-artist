@@ -9,6 +9,7 @@ import Restart from "@/assets/restart.jpg"
 import LilX from "@/assets/lilx.jpg"
 
 import { useState } from "react";
+import Image from "next/image";
 
 interface GridControllerProps{
     mode: "artist" | "generations"
@@ -29,11 +30,18 @@ export function GridController(props: GridControllerProps){
                 noneSelected={selectedArtist === null} 
                 isSelected={selectedArtist === "Travis"} 
                 artistColor="red" 
-                artistName="Yung Lixo" 
-                cardTitle="Yung Lixo"
+                artistName="Travis Scott" 
+                cardTitle="Travis Scott"
                 imageSrc={Travis.src}
                 mode="artist"
-                />
+                >
+                    <div className="flex items-center justify-center gap-10">
+                        <Image src={Travis} className="max-w-64 aspect-square object-cover" alt="greatest singer of 2020 travis scott"/>
+                        <p className="w-[400px] text-zinc-300 text-center">
+                            Travis Scott é um dos maiores cantores Trap de todos os tempos, ao lado de ídolos como Astro word, XXX tentation, ele desenvolveu musicas que inspiram as revolta nos adolecentes
+                        </p>
+                    </div>
+                </ArtistCard>
             <ArtistCard 
                 onCardClick={() => {
                     if(selectedArtist === "Taylor"){

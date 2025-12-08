@@ -10,6 +10,7 @@ import { getGeracionalMusic } from "@/util/get-gerecional-music";
 interface MusicPuzzleProps{
     artistName: string,
     mode: "artist" | "gen"
+    children?: React.ReactNode
 }
 
 export function MusicPuzzle(props: MusicPuzzleProps) {
@@ -105,7 +106,7 @@ export function MusicPuzzle(props: MusicPuzzleProps) {
     }
 
     return (
-        <div className="flex items-center flex-col bg-zinc-900 p-6 gap-4 rounded-xl w-full max-w-lg">
+        <div className="flex items-center flex-col bg-zinc-900 p-6 gap-4 rounded-xl w-full overflow-hidden">
 
             <div className="space-y-2 text-center">
                 <h1 className="text-zinc-200 text-2xl">Qual é a música?</h1>
@@ -180,7 +181,9 @@ export function MusicPuzzle(props: MusicPuzzleProps) {
             )}
 
             <div className="flex items-center justify-center p-5 relative">
-                <p className={`text-xl text-zinc-200 ${result !== "correct" && "blur-3xl"}`}>Travis scott is the best rapper on the word i guess</p>
+                <div className={`${result !== "correct" && "blur-3xl" }`}>
+                    {props.children}
+                </div>
 
                 <div className={`absolute z-40 ${result === "correct" && "hidden"}`}><Lock /></div>
             </div>

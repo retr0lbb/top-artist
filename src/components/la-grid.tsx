@@ -21,6 +21,7 @@ export function ArtistCard(
         cardTitle: string
         isSelected: boolean,
         noneSelected: boolean,
+        children?: React.ReactNode
         mode: "artist" | "gen"
         onCardClick: () => void
     }
@@ -56,10 +57,17 @@ export function ArtistCard(
               backgroundPosition: "center",
             }}
         >
-            <div onClick={props.onCardClick} className="absolute inset-0 w-full h-full cursor-pointer"></div>
+            <div onClick={props.onCardClick} className="absolute inset-0 w-auto grow h-full cursor-pointer"></div>
             
-            <div className={`flex flex-col items-center justify-center gap-4 z-20 ${!props.isSelected && "hidden"}`}>
-                <MusicPuzzle artistName={props.artistName} mode={props.mode} />
+            <div
+                className={`flex flex-col items-center justify-center gap-4 z-20
+                    ${!props.isSelected && "hidden"}
+                `}
+                style={{ width: "auto", minWidth: "fit-content" }}
+            >
+                <MusicPuzzle artistName={props.artistName} mode={props.mode}>
+                    {props.children}
+                </MusicPuzzle>
             </div>
 
             <motion.div 
