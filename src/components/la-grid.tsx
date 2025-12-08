@@ -1,12 +1,10 @@
 "use client"
-import { StaticImport } from "next/dist/shared/lib/get-img-props"
-import { convertOffsetToTimes, motion } from "framer-motion"
-import Image from "next/image"
+import {  motion } from "framer-motion"
 import { MusicPuzzle } from "./grid-controller/music-puzzle"
 
 export function LaGrid(props: { children: React.ReactNode }) {
     return (
-        <div className="flex flex-1 items-center justify-center overflow-hidden">
+        <div className="flex flex-1 items-center justify-center flex-col md:flex-row overflow-hidden">
             {props.children}
         </div>
     )
@@ -35,6 +33,7 @@ export function ArtistCard(
                     : props.isSelected
                         ? "100%"
                         : "15rem",
+                                    
             }}
             transition={{
                 duration: 0.5,

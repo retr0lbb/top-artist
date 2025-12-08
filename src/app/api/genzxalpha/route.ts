@@ -58,7 +58,7 @@ export async function GET(req: Request) {
 
     const response = {
       artist: random.artist.name,
-      track: random.title,
+      track: random.title_short,
       preview: random.preview,
       cover: random.album.cover_medium,
     };

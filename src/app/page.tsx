@@ -1,5 +1,4 @@
 import { GridController } from "@/components/grid-controller";
-import { ModalWithTemplate } from "@/components/modal";
 
 export default function Home() {
   return (
