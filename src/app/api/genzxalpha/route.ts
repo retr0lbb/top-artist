@@ -38,7 +38,7 @@ export async function GET(req: Request) {
       title: "Oh Garota Eu Quero Você Só Pra Mim.",
       artist: "Oruam",
       preview:
-        "https://cdnt-preview.dzcdn.net/api/1/1/1/e/f/0/1ef1c8ec65110ce515c559fcc7bafe15.mp3?hdnea=exp=1765168421~acl=/api/1/1/1/e/f/0/1ef1c8ec65110ce515c559fcc7bafe15.mp3*~data=user_id=0,application_id=42~hmac=1f11610d7ffd5afbf4480c9965578c123ce0b9581bf3fdc1ccc519ca0f0b72ac",
+        "https://cdnt-preview.dzcdn.net/api/1/1/1/e/f/0/1ef1c8ec65110ce515c559fcc7bafe15.mp3?hdnea=exp=1765167460~acl=/api/1/1/1/e/f/0/1ef1c8ec65110ce515c559fcc7bafe15.mp3*~data=user_id=0,application_id=42~hmac=a59fe5c79d4d5d125700c2a47f77a78de6021550a4822b9f08a3c84511139f9c",
       cover: "https://e-cdns-images.dzcdn.net/images/cover/xxxx/250x250.jpg",
     },
     {

@@ -8,6 +8,10 @@ import Labubu from "@/assets/labubu.webp"
 import Restart from "@/assets/restart.jpg"
 import LilX from "@/assets/lilx.jpg"
 
+import GenX from "@/assets/gen-x.png"
+import GenZ from "@/assets/gen-Z.png"
+import GenAlpha from "@/assets/gen-alpha.png"
+
 import { useState } from "react";
 import Image from "next/image";
 import { div } from "framer-motion/client";
@@ -92,7 +96,7 @@ export function GridController(props: GridControllerProps){
                 artistColor="red" 
                 artistName="genx" 
                 cardTitle="Geração X"
-                imageSrc={Restart.src} 
+                imageSrc={GenX.src} 
                 mode="gen"
             >
                 <div className="flex items-center justify-center flex-col gap-6">
@@ -113,7 +117,7 @@ export function GridController(props: GridControllerProps){
                 artistColor="red" 
                 artistName="genz"
                 cardTitle="Geração Z"
-                imageSrc={LilX.src}
+                imageSrc={GenZ.src}
                 mode="gen"
             >
                 <div className="flex items-center justify-center flex-col gap-6">
@@ -134,7 +138,7 @@ export function GridController(props: GridControllerProps){
                 artistColor="red" 
                 artistName="genalpha"
                 cardTitle="Geração Alpha"
-                imageSrc={Labubu.src} 
+                imageSrc={GenAlpha.src} 
                 mode="gen"
             >
                 <div className="flex items-center justify-center flex-col gap-6">
