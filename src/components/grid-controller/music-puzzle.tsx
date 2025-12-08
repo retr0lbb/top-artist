@@ -1,40 +1,83 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Lightbulb, Play, RefreshCw } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Lightbulb, Lock, Pause, Play, RefreshCw } from "lucide-react";
 import { getRandomMusic, ResponseMusic } from "@/util/get-random-music-from-artist";
+import { Button } from "../button";
+import { similarity } from "@/util/sim";
 
-export function MusicPuzzle() {
+interface MusicPuzzleProps{
+    artistName: string,
+    isSelected: boolean
+}
+
+export function MusicPuzzle(props: MusicPuzzleProps) {
     const [track, setTrack] = useState<ResponseMusic | null>(null);
     const [guess, setGuess] = useState("");
     const [result, setResult] = useState<"correct" | "wrong" | null>(null);
-    const [isPlaying, setIsPlaing] = useState(false)
+    const [isPlaying, setIsPlaying] = useState(false)
+    const [isPending, setIsPending] = useState(false)
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        const handleEnded = () => {
+            setIsPlaying(false);
+        };
+
+        audio.addEventListener("ended", handleEnded);
+
+        return () => {
+            audio.removeEventListener("ended", handleEnded);
+        };
+    }, [track]);
+
     const loadTrack = async () => {
         try {
-          const data = await getRandomMusic("Yung Lixo");
+        setIsPending(true)
+          const data = await getRandomMusic(props.artistName);
         
           setTrack(data);
         } catch (err) {
           console.error(err);
+        }finally{
+            setIsPending(false)
         }
-};
+    };
 
     function playPreview() {
-        console.log(track)
-        audioRef.current?.play();
+        if(isPlaying === true){
+            audioRef.current?.pause()
+            setIsPlaying(false)
+            return;
+        }
+        audioRef.current?.play()
+        setIsPlaying(true)
     }
 
     function checkAnswer() {
         if (!track) return;
 
-        const a = track.track.toLowerCase().trim()
+        const unfilterTrackName = track.track.toLowerCase();
+        const cleaned = unfilterTrackName
+            .replace(/\s*\((feat|ft|with|prod)[^)]*\)/gi, "")
+            .trim();
+
         const g = guess.toLowerCase().trim();
 
-        if (a === g) setResult("correct");
-        else setResult("wrong");
+        // Calcula similaridade
+        const score = similarity(cleaned, g);
+
+        console.log("similaridade:", score);
+
+        if (score >= 0.7) {
+            setResult("correct");
+        } else {
+            setResult("wrong");
+        }
     }
 
     return (
@@ -48,12 +91,12 @@ export function MusicPuzzle() {
             </div>
 
             {!track && (
-                <button
+                <Button
                     onClick={loadTrack}
-                    className="px-4 py-2 bg-zinc-200/10 border border-zinc-200/20 rounded-lg"
+                    loading={isPending}
                 >
                     Buscar música
-                </button>
+                </Button>
             )}
 
             {track && (
@@ -64,14 +107,14 @@ export function MusicPuzzle() {
                     <div className="flex items-center justify-center gap-4">
                         <button
                             onClick={playPreview}
-                            className="size-8 p-1.5 flex items-center justify-center bg-zinc-200/10 border border-zinc-200/20 rounded-lg"
+                            className="size-8 p-1.5 flex items-center justify-center bg-zinc-200/10 border border-zinc-200/20 rounded-lg cursor-pointer"
                         >
-                            <Play />
+                            {!isPlaying? <Play />: <Pause />}
                         </button>
 
                         <button
                             onClick={() => alert(`Artista: ${track.artist}`)}
-                            className="size-8 p-1.5 flex items-center justify-center bg-zinc-200/10 border border-zinc-200/20 rounded-lg"
+                            className="size-8 p-1.5 flex items-center justify-center bg-zinc-200/10 border border-zinc-200/20 rounded-lg cursor-pointer"
                         >
                             <Lightbulb />
                         </button>
@@ -86,12 +129,9 @@ export function MusicPuzzle() {
                     />
 
                     {/* Confirmar */}
-                    <button
-                        onClick={checkAnswer}
-                        className="px-4 py-2 bg-zinc-200/10 border border-zinc-200/20 rounded-lg"
-                    >
-                        Enviar resposta
-                    </button>
+                    <Button onClick={checkAnswer}>
+                        Enviar Resposta
+                    </Button>
 
                     {result === "correct" && (
                         <p className="text-green-400 font-bold">
@@ -105,15 +145,21 @@ export function MusicPuzzle() {
                         </p>
                     )}
 
-                    <button
+                    <Button
                         onClick={loadTrack}
-                        className="flex items-center gap-2 mt-4 px-4 py-2 bg-zinc-200/10 border border-zinc-200/20 rounded-lg"
+                        extraClassName="cursor-pointer flex items-center gap-2 mt-4 px-4 py-2 bg-zinc-200/10 border border-zinc-200/20 rounded-lg"
                     >
                         <RefreshCw size={16} />
                         Outra música
-                    </button>
+                    </Button>
                 </>
             )}
+
+            <div className="flex items-center justify-center p-5 relative">
+                <p className={`text-xl text-zinc-200 ${result !== "correct" && "blur-3xl"}`}>Travis scott is the best rapper on the word i guess</p>
+
+                <div className={`absolute z-40 ${result === "correct" && "hidden"}`}><Lock /></div>
+            </div>
         </div>
     );
 }

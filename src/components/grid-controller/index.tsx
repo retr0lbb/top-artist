@@ -18,7 +18,12 @@ export function GridController(){
                         setSelectedArtist("Travis")
                     }
                 }} 
-                noneSelected={selectedArtist === null} isSelected={selectedArtist === "Travis"} artistColor="red" artistName="Travis Scott" image={Travis} />
+                noneSelected={selectedArtist === null} 
+                isSelected={selectedArtist === "Travis"} 
+                artistColor="red" 
+                artistName="Yung Lixo" 
+                imageSrc={Travis.src} 
+                />
             <ArtistCard 
                 onCardClick={() => {
                     if(selectedArtist === "Taylor"){
@@ -27,7 +32,7 @@ export function GridController(){
                         setSelectedArtist("Taylor")
                     }
                 }}  
-                noneSelected={selectedArtist === null} isSelected={selectedArtist === "Taylor"} artistColor="red" artistName="Taylor Swift" image={Tailor} />
+                noneSelected={selectedArtist === null} isSelected={selectedArtist === "Taylor"} artistColor="red" artistName="Taylor Swift" imageSrc={Tailor.src} />
             <ArtistCard
                 onCardClick={() => {
                     if(selectedArtist === "Kanye"){
@@ -36,7 +41,7 @@ export function GridController(){
                         setSelectedArtist("Kanye")
                     }
                 }}
-                noneSelected={selectedArtist === null} isSelected={selectedArtist === "Kanye"} artistColor="red" artistName="Kanye West" image={Kanye} />
+                noneSelected={selectedArtist === null} isSelected={selectedArtist === "Kanye"} artistColor="red" artistName="Kanye West" imageSrc={Kanye.src} />
         </LaGrid>
     )
 }
