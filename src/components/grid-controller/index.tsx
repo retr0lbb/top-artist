@@ -10,6 +10,9 @@ import LilX from "@/assets/lilx.jpg"
 
 import { useState } from "react";
 import Image from "next/image";
+import { div } from "framer-motion/client";
+import { ModalWithTemplate } from "../modal";
+import { Button } from "../button";
 
 interface GridControllerProps{
     mode: "artist" | "generations"
@@ -17,6 +20,7 @@ interface GridControllerProps{
 
 export function GridController(props: GridControllerProps){
     const [selectedArtist, setSelectedArtist] = useState<null | string>(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     const Artist = <>
             <ArtistCard 
@@ -72,7 +76,7 @@ export function GridController(props: GridControllerProps){
                 cardTitle="Kanye West"
                 mode="artist"
                 imageSrc={Kanye.src} />
-            </>
+        </>
 
     const Generations = <>
             <ArtistCard 
@@ -90,7 +94,12 @@ export function GridController(props: GridControllerProps){
                 cardTitle="Geração X"
                 imageSrc={Restart.src} 
                 mode="gen"
-            />
+            >
+                <div className="flex items-center justify-center flex-col gap-6">
+                    <p className="text-xl text-zinc-300 max-w-[520px] text-center">Você parece conhecer muito bem as musicas da sua geração. mas você sabe qual é o impacto delas e cada geração</p>
+                    <Button onClick={()=> setIsModalOpen(true)}>Ver Impacto</Button>
+                </div>
+            </ArtistCard>
             <ArtistCard 
                 onCardClick={() => {
                     if(selectedArtist === "genz"){
@@ -106,7 +115,12 @@ export function GridController(props: GridControllerProps){
                 cardTitle="Geração Z"
                 imageSrc={LilX.src}
                 mode="gen"
-            />
+            >
+                <div className="flex items-center justify-center flex-col gap-6">
+                    <p className="text-xl text-zinc-300 max-w-[520px] text-center">Você parece conhecer muito bem as musicas da sua geração. mas você sabe qual é o impacto delas e cada geração</p>
+                    <Button onClick={()=> setIsModalOpen(true)}>Ver Impacto</Button>
+                </div>
+            </ArtistCard>
             <ArtistCard 
                 onCardClick={() => {
                     if(selectedArtist === "genalpha"){
@@ -122,13 +136,19 @@ export function GridController(props: GridControllerProps){
                 cardTitle="Geração Alpha"
                 imageSrc={Labubu.src} 
                 mode="gen"
-            />
-    </>
+            >
+                <div className="flex items-center justify-center flex-col gap-6">
+                    <p className="text-xl text-zinc-300 max-w-[520px] text-center">Você parece conhecer muito bem as musicas da sua geração. mas você sabe qual é o impacto delas e cada geração</p>
+                    <Button onClick={()=> setIsModalOpen(true)}>Ver Impacto</Button>
+                </div>
+            </ArtistCard>
+        </>
     
     return(
         <LaGrid>
             {props.mode === "artist" && Artist}
             {props.mode === "generations" && Generations}
+            <ModalWithTemplate isOpen={isModalOpen} onCloseModal={() => setIsModalOpen(false)} />
         </LaGrid>
     )
 }

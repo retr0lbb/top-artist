@@ -21,14 +21,14 @@ export async function GET(req: Request) {
       title: "BIRDS OF A FEATHER",
       artist: "Billie Eilish",
       preview:
-        "https://cdnt-preview.dzcdn.net/api/1/1/5/e/0/0/5e0fb99f6f1e0f18ab70a4c0d18efa5c.mp3?hdnea=exp=1765166915~acl=/api/1/1/5/e/0/0/5e0fb99f6f1e0f18ab70a4c0d18efa5c.mp3*~data=user_id=0,application_id=42~hmac=84f5d072bbc8288c5aa298431010698e483bd46c4db590039649e0460c136e46",
+        "https://cdnt-preview.dzcdn.net/api/1/1/5/e/0/0/5e0fb99f6f1e0f18ab70a4c0d18efa5c.mp3?hdnea=exp=1765168124~acl=/api/1/1/5/e/0/0/5e0fb99f6f1e0f18ab70a4c0d18efa5c.mp3*~data=user_id=0,application_id=42~hmac=47db53e70e5692f456a8c1ffd6bd78424f9fb06d2e22ea7cfffa174a93c527a8",
       cover: "https://e-cdns-images.dzcdn.net/images/cover/xxxx/250x250.jpg",
     },
     {
       title: "How Sweet",
       artist: "NewJeans",
       preview:
-        "https://cdnt-preview.dzcdn.net/api/1/1/8/d/9/0/8d91a96b1acc6781fc44726301ea7ed2.mp3?hdnea=exp=1765167016~acl=/api/1/1/8/d/9/0/8d91a96b1acc6781fc44726301ea7ed2.mp3*~data=user_id=0,application_id=42~hmac=3b2053a2f59b91844d2f5050154acc5e1f132b7cedb0f8eaaa34f06bd01bb05b",
+        "https://cdnt-preview.dzcdn.net/api/1/1/8/d/9/0/8d91a96b1acc6781fc44726301ea7ed2.mp3?hdnea=exp=1765168061~acl=/api/1/1/8/d/9/0/8d91a96b1acc6781fc44726301ea7ed2.mp3*~data=user_id=0,application_id=42~hmac=c2d4d38651478bf2abe7b467be23b012916b6c916bfb1c8b055f32aaad1ca202",
       cover: "https://e-cdns-images.dzcdn.net/images/cover/xxxx/250x250.jpg",
     },
   ];
@@ -38,14 +38,14 @@ export async function GET(req: Request) {
       title: "Oh Garota Eu Quero Você Só Pra Mim.",
       artist: "Oruam",
       preview:
-        "https://cdnt-preview.dzcdn.net/api/1/1/1/e/f/0/1ef1c8ec65110ce515c559fcc7bafe15.mp3?hdnea=exp=1765167460~acl=/api/1/1/1/e/f/0/1ef1c8ec65110ce515c559fcc7bafe15.mp3*~data=user_id=0,application_id=42~hmac=a59fe5c79d4d5d125700c2a47f77a78de6021550a4822b9f08a3c84511139f9c",
+        "https://cdnt-preview.dzcdn.net/api/1/1/1/e/f/0/1ef1c8ec65110ce515c559fcc7bafe15.mp3?hdnea=exp=1765168421~acl=/api/1/1/1/e/f/0/1ef1c8ec65110ce515c559fcc7bafe15.mp3*~data=user_id=0,application_id=42~hmac=1f11610d7ffd5afbf4480c9965578c123ce0b9581bf3fdc1ccc519ca0f0b72ac",
       cover: "https://e-cdns-images.dzcdn.net/images/cover/xxxx/250x250.jpg",
     },
     {
       title: "PASSO BEM SOLTO",
       artist: "ATLXS",
       preview:
-        "https://cdnt-preview.dzcdn.net/api/1/1/5/5/9/0/55900afd59d5c610926837fd8b031040.mp3?hdnea=exp=1765167247~acl=/api/1/1/5/5/9/0/55900afd59d5c610926837fd8b031040.mp3*~data=user_id=0,application_id=42~hmac=0124436b751b3cee9e6284fc982c0b294a825aba3906d860bd5575db8b99f436",
+        "https://cdnt-preview.dzcdn.net/api/1/1/5/5/9/0/55900afd59d5c610926837fd8b031040.mp3?hdnea=exp=1765168339~acl=/api/1/1/5/5/9/0/55900afd59d5c610926837fd8b031040.mp3*~data=user_id=0,application_id=42~hmac=6d4a7f23a6bbbee039d236c20aa68e5a01af7f3a36c4f94d7efd5bd34c44fda0",
       cover: "https://e-cdns-images.dzcdn.net/images/cover/xxxx/250x250.jpg",
     },
     {

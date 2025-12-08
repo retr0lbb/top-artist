@@ -109,9 +109,9 @@ export function MusicPuzzle(props: MusicPuzzleProps) {
         <div className="flex items-center flex-col bg-zinc-900 p-6 gap-4 rounded-xl w-full overflow-hidden">
 
             <div className="space-y-2 text-center">
-                <h1 className="text-zinc-200 text-2xl">Qual é a música?</h1>
-                <p className="text-zinc-400 text-sm">
-                    O quão voce conhece das musicas das gerações
+                <h1 className="text-zinc-200 text-4xl">Qual é a música?</h1>
+                <p className="text-zinc-400">
+                    O quão voce conhece das musicas das gerações?<br></br> Acerte pelo menos 1 musica e descubra o segredo
                 </p>
             </div>
 
