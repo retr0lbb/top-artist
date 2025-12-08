@@ -4,8 +4,11 @@ import Travis from "@/assets/travis.jpg"
 import Tailor from "@/assets/tailor.webp"
 import Kanye from "@/assets/kanye2.jpg"
 
+import Lilxan from "@/assets/gen-Z.png"
+
 import MilenialGraph from "@/assets/template.jpg"
 import GenzGraph from "@/assets/infografico_genz.jpg"
+import AlphaDFodase from "@/assets/gen-alpha-inf.jpeg"
 
 import GenX from "@/assets/gen-x.png"
 import GenZ from "@/assets/gen-Z.png"
@@ -164,6 +167,10 @@ export function GridController(props: GridControllerProps){
 
             <ModalWithTemplate isOpen={isModalOpen === TypesOfModalOpen.GENZ} onCloseModal={() => setIsModalOpen(TypesOfModalOpen.NONE)}>
                 <Image alt="Memez" src={GenzGraph} className="max-w-[1427px]"/>
+            </ModalWithTemplate>
+
+            <ModalWithTemplate isOpen={isModalOpen === TypesOfModalOpen.GENALPHA} onCloseModal={() => setIsModalOpen(TypesOfModalOpen.NONE)}>
+                <Image alt="Memez" src={AlphaDFodase} className="w-[1200px]"/>
             </ModalWithTemplate>
         </LaGrid>
     )
