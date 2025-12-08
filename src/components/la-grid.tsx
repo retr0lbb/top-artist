@@ -18,8 +18,10 @@ export function ArtistCard(
         imageSrc: string,
         alt?: string,
         artistName: string,
+        cardTitle: string
         isSelected: boolean,
         noneSelected: boolean,
+        mode: "artist" | "gen"
         onCardClick: () => void
     }
 ) {
@@ -57,7 +59,7 @@ export function ArtistCard(
             <div onClick={props.onCardClick} className="absolute inset-0 w-full h-full cursor-pointer"></div>
             
             <div className={`flex flex-col items-center justify-center gap-4 z-20 ${!props.isSelected && "hidden"}`}>
-                <MusicPuzzle artistName={props.artistName} isSelected />
+                <MusicPuzzle artistName={props.artistName} mode={props.mode} />
             </div>
 
             <motion.div 
@@ -75,12 +77,12 @@ export function ArtistCard(
                         duration: 0.5,
                         ease: [0.4, 0, 0.2, 1]
                     }}
-                    className="text-8xl font-bold text-zinc-300 whitespace-nowrap"
+                    className="text-7xl font-bold text-zinc-300 whitespace-nowrap"
                     style={{
                         transformOrigin: "top left"
                     }}
                 >
-                    {props.artistName}
+                    {props.cardTitle}
                 </motion.p>
             </motion.div>
         </motion.div>

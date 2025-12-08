@@ -5,10 +5,11 @@ import { Lightbulb, Lock, Pause, Play, RefreshCw } from "lucide-react";
 import { getRandomMusic, ResponseMusic } from "@/util/get-random-music-from-artist";
 import { Button } from "../button";
 import { similarity } from "@/util/sim";
+import { getGeracionalMusic } from "@/util/get-gerecional-music";
 
 interface MusicPuzzleProps{
     artistName: string,
-    isSelected: boolean
+    mode: "artist" | "gen"
 }
 
 export function MusicPuzzle(props: MusicPuzzleProps) {
@@ -36,17 +37,40 @@ export function MusicPuzzle(props: MusicPuzzleProps) {
     }, [track]);
 
     const loadTrack = async () => {
-        try {
+    try {
+        setGuess("")
+        setResult(null)
+        setTrack(null)
+        setIsPlaying(false)
         setIsPending(true)
-          const data = await getRandomMusic(props.artistName);
-        
-          setTrack(data);
+
+        let data: ResponseMusic | null = null;
+
+        switch (props.mode) {
+        case "artist":
+            data = await getRandomMusic(props.artistName);
+            break;
+
+        case "gen":
+            data = await getGeracionalMusic(props.artistName);
+            break;
+        }
+
+        if (!data || !data.preview) {
+            console.error("Música inválida ou sem preview:", data);
+            alert("Nenhuma música válida encontrada.");
+            return;
+        }
+
+        setTrack(data);
+
         } catch (err) {
-          console.error(err);
-        }finally{
-            setIsPending(false)
+            console.error(err);
+        } finally {
+            setIsPending(false);
         }
     };
+
 
     function playPreview() {
         if(isPlaying === true){
@@ -86,7 +110,7 @@ export function MusicPuzzle(props: MusicPuzzleProps) {
             <div className="space-y-2 text-center">
                 <h1 className="text-zinc-200 text-2xl">Qual é a música?</h1>
                 <p className="text-zinc-400 text-sm">
-                    Ouça o preview e tente acertar o nome
+                    O quão voce conhece das musicas das gerações
                 </p>
             </div>
 
