@@ -7,6 +7,7 @@ import Template from "@/assets/template.jpg"
 interface ModalWithTemplateProps{
     isOpen?: boolean
     onCloseModal: () => void
+    children: React.ReactNode
 }
 
 export function ModalWithTemplate(props: ModalWithTemplateProps){
@@ -21,14 +22,14 @@ export function ModalWithTemplate(props: ModalWithTemplateProps){
                 scale: 1
             }}
         >
-            <div className="bg-zinc-900 border border-zinc-200/10 px-6 py-4 flex flex-col min-w-[500px]">
-                <div className="flex w-full items-center justify-between px-6">
+            <div className="bg-zinc-900 border border-zinc-200/10 px-6 py-4 flex flex-col min-w-[500px] relative max-w-[1500px]">
+                <div className="flex w-full items-center justify-between px-6 z-50">
                     <div /> 
                     <button onClick={() => props.onCloseModal()}>
                         <X className="text-zinc-500 hover:text-zinc-300 transition-all size-8 cursor-pointer" />
                     </button>
                 </div>
-                <Image alt="Memez" src={Template} className="max-w-[1427px]"/>
+                {props.children}
             </div>
         </motion.div>
     )
