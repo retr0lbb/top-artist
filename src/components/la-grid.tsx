@@ -4,7 +4,7 @@ import { MusicPuzzle } from "./grid-controller/music-puzzle"
 
 export function LaGrid(props: { children: React.ReactNode }) {
     return (
-        <div className="flex flex-1 items-center justify-center flex-col md:flex-row overflow-hidden">
+        <div className="flex flex-1 items-center justify-center overflow-hidden">
             {props.children}
         </div>
     )
